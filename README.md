@@ -96,9 +96,11 @@ flyserve -f /path/to/file.txt -u username -pw password
 
 ## Screenshots
 
- <img alt="screenshot1" width="400" src="https://github.com/JCoupalK/FlyServe/assets/108779415/74c10791-62d5-4e68-988a-62dfba2965ff"/>
-
- <img alt="screenshot2" width="400" src="https://github.com/JCoupalK/FlyServe/assets/108779415/6422ff0e-94c0-4272-98ef-c02217a11cc2"/>
+<img alt="screenshot1" width="400" src="https://github.com/JCoupalK/FlyServe/assets/108779415/74c10791-62d5-4e68-988a-62dfba2965ff"/>
+<br>
+<img alt="screenshot2" width="400" src="https://github.com/JCoupalK/FlyServe/assets/108779415/3e93a041-c54e-4c64-96fb-d59ff63e6640"/>
+<br>
+<img alt="screenshot3" width="400" src="https://github.com/JCoupalK/FlyServe/assets/108779415/da666e86-ae02-4c25-8fe7-cb5f9f8f04c0"/>
 
 ## Contributing
 
