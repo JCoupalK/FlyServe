@@ -1,4 +1,11 @@
+<p align="center">
+ <img src="https://github.com/JCoupalK/FlyServe/assets/108779415/e2cc0123-bfcc-4191-8a83-6ccf37d8e687"
+</p>
+
 # FlyServe
+![License](https://img.shields.io/github/license/JCoupalK/FlyServe)
+![GitHub issues](https://img.shields.io/github/issues-raw/JCoupalK/FlyServe)
+![GitHub go.mod Go version (branch & subdirectory of monorepo)](https://img.shields.io/github/go-mod/go-version/JCoupalK/FlyServe/main)
 
 FlyServe is a simple HTTP server tool written in Go, designed to serve files and directories over HTTP. It provides features such as serving specific files, serving directories, basic authentication, and directory listings.
 
@@ -9,6 +16,7 @@ FlyServe is a simple HTTP server tool written in Go, designed to serve files and
 - [Building from Source](#building-from-source)
 - [Usage](#usage)
 - [Examples](#examples)
+- [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -63,11 +71,7 @@ FlyServe is a simple HTTP server tool written in Go, designed to serve files and
 
 ## Usage
 
-```bash
-flyserve [options]
-```
-
-### Options
+Options:
 
 ```
 -p, --port            Port to serve on (Default is 8080)
@@ -77,7 +81,7 @@ flyserve [options]
 -pw, --password       Password for basic authentication
 ```
 
-### Examples
+## Examples
 
 ```bash
 # Serve files from the current directory on port 8080
@@ -89,6 +93,11 @@ flyserve -d /path/to/directory -p 9000
 # Serve a specific file on port 8080 with basic authentication
 flyserve -f /path/to/file.txt -u username -pw password
 ```
+
+## Screenshots
+
+![image](https://github.com/JCoupalK/FlyServe/assets/108779415/74c10791-62d5-4e68-988a-62dfba2965ff)
+![image](https://github.com/JCoupalK/FlyServe/assets/108779415/6422ff0e-94c0-4272-98ef-c02217a11cc2)
 
 ## Contributing
 
