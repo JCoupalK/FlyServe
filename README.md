@@ -73,7 +73,7 @@ FlyServe is a simple HTTP server tool written in Go, designed to serve files and
 
 Options:
 
-```
+```txt
 -p, --port            Port to serve on (Default is 8080)
 -f, --file            Specific file to serve
 -d, --directory       Directory to serve files from (Default is current directory)
