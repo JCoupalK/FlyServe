@@ -92,6 +92,9 @@ flyserve -d /path/to/directory -p 9000
 
 # Serve a specific file on port 8080 with basic authentication
 flyserve -f /path/to/file.txt -u username -pw password
+
+# Serve websites by just specifying a directory that contains an index.html
+flyserve -d /path/to/website -p 80
 ```
 
 ## Screenshots
