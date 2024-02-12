@@ -17,7 +17,7 @@ func indexExists(path string) bool {
 func serveDirectoryWithCustomText(w http.ResponseWriter, requestedPath, dirPath string) {
 	displayPath := requestedPath
 	if displayPath == "." {
-		displayPath = "/" // Ensure root is displayed as "/"
+		displayPath = "/" // root is displayed as "/"
 	}
 
 	if !strings.HasSuffix(displayPath, "/") {
@@ -29,11 +29,10 @@ func serveDirectoryWithCustomText(w http.ResponseWriter, requestedPath, dirPath 
 		http.Error(w, "Server error", http.StatusInternalServerError)
 		return
 	}
-
-	// Set Content-Type
+	
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
-	// Write the HTML header with embedded styles
+	// Write HTML
 	fmt.Fprintf(w, `<!DOCTYPE html>
 <html>
 <head>
@@ -92,9 +91,8 @@ T+uMp5ure5UEREB1vx/q26kA+Pz3Gwu1zi53Nc67W95Sv5g9lNOdT6o/AAAAAElFTkSuQmCC" rel="i
     <h1>Index of %s</h1>
     <ul>`, displayPath, displayPath)
 
-	// Conditionally add a link to the parent directory if not at root
+	// add a link to the parent directory if not at root
 	if displayPath != "/" {
-		// Create a parent directory path
 		parentPath := filepath.Dir(filepath.Clean(displayPath))
 		if parentPath == "." {
 			parentPath = "/"
@@ -102,17 +100,17 @@ T+uMp5ure5UEREB1vx/q26kA+Pz3Gwu1zi53Nc67W95Sv5g9lNOdT6o/AAAAAElFTkSuQmCC" rel="i
 		fmt.Fprintf(w, `<li><a href="%s">../</a></li>`, parentPath)
 	}
 
-	// Generate file links
+	// generate file links
 	for _, file := range files {
 		name := file.Name()
 		if file.IsDir() {
 			name += "/"
 		}
-		href := filepath.Join(displayPath, name) // Use web path for href
+		href := filepath.Join(displayPath, name) // use web path for href
 		fmt.Fprintf(w, `<li><a href="%s">%s</a></li>`, href, name)
 	}
 
-	// Close the HTML tags
+	// close HTML tags
 	fmt.Fprintf(w, `</ul>
 </div>
 <a href="https://github.com/JCoupalK/FlyServe" target="_blank">
