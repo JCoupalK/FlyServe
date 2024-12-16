@@ -12,6 +12,8 @@ import (
 
 func main() {
 	var portStr, filePath, dirPath, username, password string
+	var autoResolveHTML bool
+
 	flag.StringVar(&portStr, "port", "8080", "Port to serve on")
 	flag.StringVar(&portStr, "p", "8080", "Port to serve on (shorthand)")
 	flag.StringVar(&filePath, "file", "", "Specific file to serve")
@@ -22,15 +24,21 @@ func main() {
 	flag.StringVar(&username, "u", "", "Username for basic authentication (shorthand)")
 	flag.StringVar(&password, "password", "", "Password for basic authentication")
 	flag.StringVar(&password, "pw", "", "Password for basic authentication (shorthand)")
+	flag.BoolVar(&autoResolveHTML, "html", false, "Enable auto-resolution of .html files")
+	flag.BoolVar(&autoResolveHTML, "h", false, "Enable auto-resolution of .html files (shorthand)")
 
 	// Usage function
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: %s [options]\n\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "  -p, --port 	\tPort to serve on (Default is 8080)\n")
-		fmt.Fprintf(os.Stderr, "  -f, --file 	\tSpecific file to serve\n")
-		fmt.Fprintf(os.Stderr, "  -d, --directory \tDirectory to serve files from (Default is current directory)\n")
+		fmt.Fprintf(os.Stderr, "  -p, --port    \tPort to serve on (Default is 8080)\n")
+		fmt.Fprintf(os.Stderr, "  -f, --file    \tSpecific file to serve\n")
+		fmt.Fprintf(
+			os.Stderr,
+			"  -d, --directory \tDirectory to serve files from (Default is current directory)\n",
+		)
 		fmt.Fprintf(os.Stderr, "  -u, --username \tUsername for basic authentication\n")
 		fmt.Fprintf(os.Stderr, "  -pw, --password \tPassword for basic authentication\n")
+		fmt.Fprintf(os.Stderr, "  -h, --html    \tEnable auto-resolution of .html files\n")
 	}
 
 	flag.Parse()
@@ -66,6 +74,17 @@ func main() {
 
 		fullPath := filepath.Join(dirPath, filepath.Clean(r.URL.Path))
 
+		if autoResolveHTML {
+			// Check if the file without .html exists
+			if _, err := os.Stat(fullPath); os.IsNotExist(err) {
+				// Try adding .html
+				fullPathWithHTML := fullPath + ".html"
+				if _, err := os.Stat(fullPathWithHTML); err == nil {
+					fullPath = fullPathWithHTML
+				}
+			}
+		}
+
 		// Serve index.html if the request is for a directory that contains it
 		if fileInfo, err := os.Stat(fullPath); err == nil {
 			if fileInfo.IsDir() {
@@ -92,3 +111,4 @@ func main() {
 		log.Fatal(err)
 	}
 }
+

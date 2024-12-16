@@ -79,6 +79,7 @@ Options:
 -d, --directory       Directory to serve files from (Default is current directory)
 -u, --username        Username for basic authentication
 -pw, --password       Password for basic authentication
+-h, --html            Enable auto-resolution of .html files
 ```
 
 ## Examples
@@ -94,7 +95,7 @@ flyserve -d /path/to/directory -p 9000
 flyserve -f /path/to/file.txt -u username -pw password
 
 # Serve websites by just specifying a directory that contains an index.html
-flyserve -d /path/to/website -p 80
+flyserve -d /path/to/website -p 80 -h
 ```
 
 ## Screenshots
