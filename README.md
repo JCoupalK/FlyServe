@@ -7,7 +7,7 @@
 ![GitHub issues](https://img.shields.io/github/issues-raw/JCoupalK/FlyServe)
 ![GitHub go.mod Go version (branch & subdirectory of monorepo)](https://img.shields.io/github/go-mod/go-version/JCoupalK/FlyServe/main)
 
-FlyServe is a simple HTTP server tool written in Go, designed to serve files and directories over HTTP. It provides features such as serving specific files, serving directories, basic authentication, and directory listings.
+FlyServe is a simple web server written in Go, designed to serve files and directories over HTTP. It provides features such as serving specific files, serving directories, basic authentication, and directory listings.
 
 ## Table of Contents
 
